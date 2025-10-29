@@ -4,7 +4,7 @@ import FeedbackList from './components/FeedbackList';
 import Dashboard from './components/Dashboard';
 import './App.css';
 
-// ✅ UPDATE THIS LINE - Use your new Render backend URL
+// ✅ UPDATED BACKEND URL
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
   ? 'https://student-feedback-app-e9ce.onrender.com/api' 
   : 'http://localhost:5000/api';
@@ -23,7 +23,6 @@ function App() {
   const fetchFeedbacks = async () => {
     setLoading(true);
     try {
-      console.log('Fetching from:', `${API_BASE_URL}/feedback`);
       const response = await fetch(`${API_BASE_URL}/feedback`);
       if (!response.ok) throw new Error('Failed to fetch feedbacks');
       
@@ -76,4 +75,67 @@ function App() {
     }
   };
 
-  // ... rest of your App.js code remains the same
+  const renderView = () => {
+    if (loading && currentView !== 'form') {
+      return <div className="loading">Loading...</div>;
+    }
+
+    switch (currentView) {
+      case 'form':
+        return <FeedbackForm onFeedbackAdded={handleFeedbackAdded} />;
+      case 'list':
+        return <FeedbackList feedbacks={feedbacks} onDelete={handleDeleteFeedback} />;
+      case 'dashboard':
+      default:
+        return <Dashboard feedbacks={feedbacks} />;
+    }
+  };
+
+  return (
+    <div className="App">
+      {/* Notification System */}
+      {notification.message && (
+        <div className={`notification ${notification.type}`}>
+          {notification.message}
+        </div>
+      )}
+
+      <header className="app-header">
+        <div className="header-content">
+          <h1>Student Feedback System</h1>
+          <p>Share your learning experience</p>
+        </div>
+        <nav className="nav-menu">
+          <button 
+            className={`nav-btn ${currentView === 'dashboard' ? 'active' : ''}`}
+            onClick={() => setCurrentView('dashboard')}
+          >
+            Dashboard
+          </button>
+          <button 
+            className={`nav-btn ${currentView === 'form' ? 'active' : ''}`}
+            onClick={() => setCurrentView('form')}
+          >
+            Submit Feedback
+          </button>
+          <button 
+            className={`nav-btn ${currentView === 'list' ? 'active' : ''}`}
+            onClick={() => setCurrentView('list')}
+          >
+            View All Feedback
+          </button>
+        </nav>
+      </header>
+      
+      <main className="app-main">
+        {renderView()}
+      </main>
+
+      <footer className="app-footer">
+        <p>&copy; 2025 Student Feedback System.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;

@@ -2,6 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import './FeedbackForm.css';
 
+// API configuration for different environments
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://student-feedback-api.onrender.com/api' 
+  : 'http://localhost:5000/api';
+
 export default function FeedbackForm({ onFeedbackAdded }) {
   const [form, setForm] = useState({ 
     studentName: "", 
@@ -28,7 +33,7 @@ export default function FeedbackForm({ onFeedbackAdded }) {
     setError("");
 
     try {
-      await axios.post("http://localhost:5000/api/feedback", form);
+      await axios.post(`${API_BASE_URL}/feedback`, form);
       onFeedbackAdded();
       setForm({ studentName: "", courseCode: "", courseName: "", comments: "", rating: 5 });
     } catch (err) {
@@ -86,7 +91,7 @@ export default function FeedbackForm({ onFeedbackAdded }) {
             <textarea 
               id="comments"
               name="comments" 
-              placeholder="Share your thoughts about the course, teaching style, materials, etc. (Minimum 5 characters)"
+              placeholder="Share your thoughts about the course, teaching style, materials, etc. (Minimum 10 characters)"
               value={form.comments} 
               onChange={handleChange}
               rows="4"

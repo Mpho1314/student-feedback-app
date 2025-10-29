@@ -1,0 +1,182 @@
+﻿/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: 
+    linear-gradient(rgba(44, 44, 44, 0.7), rgba(44, 44, 44, 0.7)),
+    url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Notification System */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification.success {
+  background: #4CAF50;
+  border-left: 4px solid #2E7D32;
+}
+
+.notification.error {
+  background: #f44336;
+  border-left: 4px solid #c62828;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Header Styles - Photoshop Inspired */
+.app-header {
+  background: rgba(54, 54, 54, 0.85);
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid #555;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.header-content h1 {
+  color: #e0e0e0;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.header-content p {
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+/* Navigation - Photoshop Style */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background: #4a4a4a;
+  color: #e0e0e0;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-btn:hover {
+  background: #555;
+  border-color: #666;
+}
+
+.nav-btn.active {
+  background: #007acc;
+  border-color: #0098ff;
+  color: white;
+}
+
+/* Main Content */
+.app-main {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1rem;
+  color: #999;
+  font-weight: 300;
+}
+
+/* Footer */
+.app-footer {
+  background: rgba(54, 54, 54, 0.85);
+  color: #999;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 1px solid #555;
+  font-size: 0.8rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0.8rem 1rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-btn {
+    width: 180px;
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .app-main {
+    padding: 0.5rem;
+  }
+}

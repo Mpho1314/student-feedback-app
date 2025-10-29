@@ -1,0 +1,270 @@
+.dashboard {
+  background: rgba(54, 54, 54, 0.8);
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 1.5rem;
+  color: #e0e0e0;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard h2 {
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(44, 44, 44, 0.6);
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: #666;
+  transform: translateY(-2px);
+}
+
+.stat-card h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #e0e0e0;
+  margin-bottom: 0.25rem;
+}
+
+.stat-subtitle {
+  font-size: 0.7rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.rating-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-distribution {
+  background: rgba(44, 44, 44, 0.6);
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.rating-distribution h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.rating-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+
+.rating-label {
+  font-size: 0.8rem;
+  color: #999;
+  width: 35px;
+  font-weight: 500;
+}
+
+.bar-container {
+  flex: 1;
+  background: #555;
+  border-radius: 2px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007acc, #0098ff);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.rating-count {
+  font-size: 0.75rem;
+  color: #777;
+  width: 60px;
+  text-align: right;
+  font-weight: 300;
+}
+
+.recent-feedbacks {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-feedbacks h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.feedback-table-container {
+  background: rgba(44, 44, 44, 0.6);
+  border: 1px solid #555;
+  border-radius: 4px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.feedback-table th {
+  background: #4a4a4a;
+  color: #ccc;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #555;
+}
+
+.feedback-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #555;
+  color: #e0e0e0;
+}
+
+.feedback-table tr:last-child td {
+  border-bottom: none;
+}
+
+.feedback-table tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.student-cell .student-name {
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+.course-badge {
+  background: #007acc;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.table-rating .star {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.table-rating .star.filled {
+  color: #ffd700;
+}
+
+.comments-preview {
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.date-cell {
+  color: #777;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 2rem !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .feedback-table {
+    font-size: 0.8rem;
+  }
+  
+  .feedback-table th,
+  .feedback-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.course-name-cell .course-name {
+  color: #ccc;
+  font-size: 0.8rem;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

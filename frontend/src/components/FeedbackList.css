@@ -1,0 +1,196 @@
+.feedback-list {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feedback-list-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.feedback-list-header h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-count {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.feedback-list-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+}
+
+.feedback-list-empty h3 {
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.feedback-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+.feedback-card {
+  background: rgba(54, 54, 54, 0.8);
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.feedback-card:hover {
+  border-color: #666;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.student-info h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  margin-bottom: 0.25rem;
+}
+
+.course-code {
+  background: #007acc;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.rating-display .star {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.rating-display .star.filled {
+  color: #ffd700;
+}
+
+.rating-number {
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 500;
+}
+
+.card-content {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.comments {
+  color: #ccc;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #555;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #777;
+  font-weight: 300;
+}
+
+.delete-btn {
+  background: #d32f2f;
+  color: white;
+  border: 1px solid #f44336;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.delete-btn:hover {
+  background: #f44336;
+  border-color: #ff5252;
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feedback-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .feedback-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-cards {
+    grid-template-columns: 1fr;
+  }
+}
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.course-name {
+  color: #ccc;
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-style: italic;
+}

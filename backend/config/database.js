@@ -1,18 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
-import dotenv from 'dotenv';
 
-dotenv.config();
+// ⚠️ TEMPORARY FIX - REPLACE WITH YOUR ACTUAL SUPABASE CREDENTIALS
+const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL_HERE'; // e.g., https://abc123.supabase.co
+const supabaseKey = 'YOUR_SERVICE_ROLE_KEY_HERE';     // e.g., eyJhbGciOiJ...
 
-// Log to verify environment variables are loading
-console.log('Supabase URL:', process.env.SUPABASE_URL ? 'Loaded' : 'Missing');
-console.log('Supabase Key:', process.env.SUPABASE_SERVICE_KEY ? 'Loaded' : 'Missing');
-
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_KEY; // Use SERVICE ROLE key, not anon key
-
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing Supabase environment variables');
-}
+console.log('🔧 Using temporary Supabase configuration');
 
 const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
@@ -20,5 +12,10 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
     persistSession: false
   }
 });
+
+// Test connection
+supabase.from('feedback').select('*', { count: 'exact', head: true })
+  .then(() => console.log('✅ Supabase connected successfully'))
+  .catch(error => console.error('❌ Supabase connection failed:', error.message));
 
 export default supabase;

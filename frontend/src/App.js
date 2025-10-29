@@ -1,8 +1,13 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import FeedbackForm from './components/FeedbackForm';
 import FeedbackList from './components/FeedbackList';
 import Dashboard from './components/Dashboard';
 import './App.css';
+
+// API configuration for different environments
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://student-feedback-api.onrender.com/api' 
+  : 'http://localhost:5000/api';
 
 function App() {
   const [currentView, setCurrentView] = useState('dashboard');
@@ -18,7 +23,7 @@ function App() {
   const fetchFeedbacks = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/feedback');
+      const response = await fetch(`${API_BASE_URL}/feedback`);
       if (!response.ok) throw new Error('Failed to fetch feedbacks');
       
       const data = await response.json();
@@ -26,7 +31,7 @@ function App() {
         id: item.id,
         studentName: item.student_name,
         courseCode: item.course_code,
-        courseName: item.course_name, // Added courseName mapping
+        courseName: item.course_name,
         comments: item.comments,
         rating: item.rating,
         createdAt: item.created_at
@@ -53,7 +58,7 @@ function App() {
   const handleDeleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete this feedback?')) {
       try {
-        const response = await fetch(`http://localhost:5000/api/feedback/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/feedback/${id}`, {
           method: 'DELETE',
         });
 

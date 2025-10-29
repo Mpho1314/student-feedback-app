@@ -1,4 +1,4 @@
-﻿import express from 'express'
+import express from 'express'
 import Feedback from '../models/Feedback.js'
 
 const router = express.Router()
@@ -6,10 +6,12 @@ const router = express.Router()
 // GET all feedback
 router.get('/', async (req, res) => {
   try {
+    console.log('Fetching all feedback...');
     const feedbacks = await Feedback.getAll()
+    console.log(`Found ${feedbacks.length} feedback entries`);
     res.json(feedbacks)
   } catch (error) {
-    console.error('Error fetching feedback:', error)
+    console.error('Error fetching feedback:', error.message)
     res.status(500).json({ 
       error: 'Failed to fetch feedback',
       details: error.message 
@@ -20,6 +22,7 @@ router.get('/', async (req, res) => {
 // POST new feedback
 router.post('/', async (req, res) => {
   try {
+    console.log('Creating new feedback:', req.body);
     const { studentName, courseCode, courseName, comments, rating } = req.body
 
     // Validation
@@ -43,12 +46,13 @@ router.post('/', async (req, res) => {
       rating
     })
 
+    console.log('Feedback created successfully:', newFeedback.id);
     res.status(201).json({ 
       message: 'Feedback submitted successfully',
       id: newFeedback.id 
     })
   } catch (error) {
-    console.error('Error creating feedback:', error)
+    console.error('Error creating feedback:', error.message)
     res.status(500).json({ 
       error: 'Failed to create feedback',
       details: error.message 
@@ -60,12 +64,13 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params
+    console.log('Deleting feedback ID:', id);
     await Feedback.delete(id)
     res.json({ 
       message: 'Feedback deleted successfully' 
     })
   } catch (error) {
-    console.error('Error deleting feedback:', error)
+    console.error('Error deleting feedback:', error.message)
     res.status(500).json({ 
       error: 'Failed to delete feedback',
       details: error.message 
